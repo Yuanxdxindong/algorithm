@@ -1,8 +1,5 @@
 package com.yuanxindong.algorithm.demo.day01;
 
-import com.sun.tools.javac.util.List;
-import java.util.ArrayList;
-
 /**
  * @author yuanxindong
  * @date 9/17/21  11:13 PM
@@ -17,7 +14,7 @@ public class BinarySearch {
 
 
     public static void main(String[] args) {
-        //在数据中匹配value
+        //在数据中匹配value，在有序的数组中进行查询
         int[] lists = new int[]{
             1, 2, 3, 48, 59, 100, 111, 123, 125, 126, 128, 2344, 88888,
         };
@@ -27,6 +24,16 @@ public class BinarySearch {
 
         int i1 = bSearchPlus(lists, 0, lists.length, value);
         System.out.println(i1);
+
+        //查找第一个值等于给定的值
+        int[] listV2 = new int[]{
+            1, 2, 3, 48, 59, 100, 111, 123, 123, 123, 125, 126, 128, 2344, 88888,
+        };
+        int value2 = 123;
+
+        int i2 = bSearchFirst(listV2, value2);
+        System.out.println(i2);
+
 
     }
 
@@ -79,6 +86,33 @@ public class BinarySearch {
         } else {
             return bSearchPlus(a, low, mid + 1, value);
         }
+    }
+
+
+    private static int bSearchFirst(int[] a, int value) {
+
+        int low = 0;
+        int high = a.length;
+
+        while (low <= high) {
+            int mid = (high + low) / 2;
+            if (a[mid] < value) {
+                low = mid + 1;
+            } else if (a[mid] > value) {
+                high = mid - 1;
+            } else if (a[mid] == value) {
+                //如果前一个数字不等与a[mid]
+                if (a[mid - 1] != value || (mid == 0)) {
+                    return mid;
+                } else {
+                    high = mid - 1;
+
+                }
+            }
+
+        }
+
+        return -1;
     }
 
 
