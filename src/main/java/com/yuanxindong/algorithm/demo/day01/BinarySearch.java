@@ -11,16 +11,17 @@ public class BinarySearch {
 
     /**
      * 有序数组，进行匹配值
+     *
      * @param args
      */
 
 
     public static void main(String[] args) {
         //在数据中匹配value
-        int[]  lists = new  int [] {
-            1,2,3,48,59,100,111,123,125,126,128,2344,88888,
+        int[] lists = new int[]{
+            1, 2, 3, 48, 59, 100, 111, 123, 125, 126, 128, 2344, 88888,
         };
-        int  value = 125;
+        int value = 125;
         int i = bSearch(lists, value);
         System.out.println(i);
 
